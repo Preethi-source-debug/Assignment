@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script>
+
+     function reverseWordsInSentence(sentence) {
+
+        const words = sentence.split(" "); 
+        let reversedWords = [];
+
+
+        for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        
+        // reverse the words in the array and join it 
+        const reversedWord = word.split('').reverse().join('');
+        
+        reversedWords.push(reversedWord);
+    }
+
+        // Join the reversed words using join and add space between the 
+        const reversedSentence = reversedWords.join(' ');  // Join the reversed words
+
+        return reversedSentence;
+}
+
+    
+     const inputSentence = "This is a sunny day";
+     const reversedSentence = reverseWordsInSentence(inputSentence);
+
+
+     console.log(inputSentence);
+     console.log(reversedSentence);
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="form.css">
+   
+</head>
+<body>
+    <h1 id="tittle">Survey Form</h1>
+    <form id="survey_form">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" required><br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" required><br>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" required><br>
+
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="Select Country">Select Country</option>
+            <option value="India">India</option>
+        </select><br>
+
+        <label>Gender:</label><br>
+        <input type="checkbox" id="male" name="gender" value="Male">Male
+        <input type="checkbox" id="female" name="gender" value="Female">Female
+        <input type="checkbox" id="other" name="gender" value="Other">Other
+        <br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="mobile_number">Mobile Number:</label>
+        <input type="tel" id="mobile_number" required><br>
+
+        <input type="button" value="Submit" onclick="submitForm()">
+        <input type="button" value="Reset" onclick="resetForm()">
+    </form>
+
+    <div id="popup">
+        <h2>Survey Form Submission</h2>
+        <pre id="popup-content"></pre>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script >
+        function submitForm() {
+          var firstName = document.getElementById("first_name").value;
+          var lastName = document.getElementById("last_name").value;
+          var dob = document.getElementById("date_of_birth").value;
+          var country = document.getElementById("country").value;
+          var gender = document.querySelectorAll('input[name="gender"]:checked');
+          var profession = document.getElementById("profession").value;
+          var email = document.getElementById("email").value;
+          var mobileNumber = document.getElementById("mobile_number").value;
+
+        if (!firstName || !lastName || !dob || country === "Select Country" || gender.length === 0 || !profession || !email || !mobileNumber) {
+        alert("Please fill out all required fields.");
+        return;
+        }
+
+          var genderValue = gender.length > 0 ? gender[0].value : "";
+
+          var popupContent = `First Name: ${firstName}\n`;
+              popupContent += `Last Name: ${lastName}\n`;
+              popupContent += `Date of Birth: ${dob}\n`;
+              popupContent += `Country: ${country}\n`;
+              popupContent += `Gender: ${genderValue}\n`;
+              popupContent += `Profession: ${profession}\n`;
+              popupContent += `Email: ${email}\n`;
+              popupContent += `Mobile Number: ${mobileNumber}`;
+
+              document.getElementById("popup-content").textContent = popupContent;
+              document.getElementById("popup").style.display = "block";
+
+             // Reset the form
+              document.getElementById("survey_form").reset();
+        }
+
+        function resetForm() {
+             document.getElementById("survey_form").reset();
+        }
+
+        function closePopup() {
+             document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
+    </body>
+</html>

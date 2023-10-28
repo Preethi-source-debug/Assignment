@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sortDescending(array) {
+            if (array.length <= 1) {
+                return array;
+            }
+
+            const first = array[0];
+            const left = [];
+            const right = [];
+
+            for (let i = 1; i < array.length; i++) {
+                if (array[i] > first) {
+                    left.push(array[i]);
+                } else {
+                    right.push(array[i]);
+                }
+            }
+
+            return [...sortDescending(left), first, ...sortDescending(right)];
+        }
+
+        const array = [7, 6, 5, 4, 3, 2, 1]; // Sample input array
+        const sortedArray = sortDescending(array);
+        console.log(sortedArray);
+    </script>
+</body>
+</html>
